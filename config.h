@@ -62,6 +62,7 @@ static const char *emacscmd[] = { "emacsclient", "-s", "gui", "-c", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 static const char *incbackl[] = { "xbacklight", "-inc", "10", NULL };
 static const char *decbackl[] = { "xbacklight", "-dec", "10", NULL };
+static const char *keymapcmd[] = { "toggle-keymap", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -85,7 +86,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_x,      setlayout,      {.v = &layouts[1]} },
 	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	// { MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_space,  spawn,          {.v = keymapcmd } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
