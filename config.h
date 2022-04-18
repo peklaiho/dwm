@@ -59,12 +59,14 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_white, "-sb", col_gray2, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *emacscmd[] = { "emacsclient", "-s", "gui", "-c" };
+static const char *browsercmd[] = { "firefox" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
     { MODKEY,                       XK_e,      spawn,          {.v = emacscmd } },
+    { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_period, focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_comma,  focusstack,     {.i = -1 } },
