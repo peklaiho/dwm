@@ -62,6 +62,9 @@ static const char *emacscmd[] = { "emacsclient", "-s", "gui", "-c", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 static const char *incbackl[] = { "xbacklight", "-inc", "10", NULL };
 static const char *decbackl[] = { "xbacklight", "-dec", "10", NULL };
+static const char *incvol[] = { "pactl", "set-sink-volume", "0", "+10%", NULL };
+static const char *decvol[] = { "pactl", "set-sink-volume", "0", "-10%", NULL };
+static const char *togglemute[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *keymapcmd[] = { "toggle-keymap", NULL };
 static const char *volumecmd[] = { "pavucontrol", NULL };
 
@@ -69,6 +72,9 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
     { 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = incbackl } },
     { 0,        XF86XK_MonBrightnessDown,      spawn,          {.v = decbackl } },
+    { 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = incvol } },
+    { 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = decvol } },
+    { 0,                XF86XK_AudioMute,      spawn,          {.v = togglemute } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
     { MODKEY,                       XK_e,      spawn,          {.v = emacscmd } },
