@@ -52,7 +52,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+// #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -63,6 +63,7 @@ static const char *browsercmd[] = { "firefox", NULL };
 static const char *incbackl[] = { "xbacklight", "-inc", "10", NULL };
 static const char *decbackl[] = { "xbacklight", "-dec", "10", NULL };
 static const char *keymapcmd[] = { "toggle-keymap", NULL };
+static const char *volumecmd[] = { "pavucontrol", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -72,6 +73,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
     { MODKEY,                       XK_e,      spawn,          {.v = emacscmd } },
     { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
+    { MODKEY,                       XK_s,      spawn,          {.v = volumecmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      incnmaster,     {.i = -1 } },
