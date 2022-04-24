@@ -6,7 +6,6 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Droid Sans Mono:size=11:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Droid Sans Mono:size=11:antialias=true:autohint=true";
 static const char col_white[]       = "#F0F0F0";
 static const char col_gray1[]       = "#181818";
 static const char col_gray2[]       = "#484848";
@@ -56,7 +55,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_white, "-sb", col_gray2, "-sf", col_white, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *emacscmd[] = { "emacsclient", "-c", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
