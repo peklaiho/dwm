@@ -24,10 +24,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Evince",   NULL,       NULL,       1 << 5,       0,           -1 },
-	{ "Gitk",     NULL,       NULL,       1 << 5,       0,           -1 },
+	/* class          instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",         NULL,       NULL,       0,            1,           -1 },
+	{ "Pavucontrol",  NULL,       NULL,       0,            1,           -1 },
+	{ "Evince",       NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "Gitk",         NULL,       NULL,       1 << 5,       0,           -1 },
 };
 
 /* layout(s) */
@@ -67,6 +68,7 @@ static const char *decvol[] = { "pactl", "set-sink-volume", "0", "-10%", NULL };
 static const char *togglemute[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *keymapcmd[] = { "toggle-keymap", NULL };
 static const char *volumecmd[] = { "pavucontrol", NULL };
+static const char *lockcmd[] = { "slock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -80,11 +82,12 @@ static Key keys[] = {
     { MODKEY,                       XK_e,      spawn,          {.v = emacscmd } },
     { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_s,      spawn,          {.v = volumecmd } },
+    { MODKEY,                       XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_j,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Down,   incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_Up,     incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_Left,   setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_Right,  setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ Mod1Mask,                     XK_Tab,    focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Tab,    focusstack,     {.i = +1 } },
